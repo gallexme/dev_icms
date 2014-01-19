@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Mitglieder</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Nutzername</th>
+					<th>Premium</th>
+					<th>Registration</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php while($userContent = $queryUser->fetch_object()){ ?>
+				<tr>
+					<td><a href="/profile?u=<?php echo $userContent->id; ?>" title="<?php echo $userContent->username; ?>'s Profil"><?php echo $userContent->username; ?></a></td>
+					<td><?php if($userContent->premium){ echo "Ja"; } else { echo "Nein";} ?></td>
+					<td><?php echo $userContent->register; ?></td>
+				</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+	</div>
+</div> 
+

@@ -1,0 +1,27 @@
+<header>
+	<div class="container" id="icms_title">
+		<span class="badge badge-inverse"><h2><?php echo Core::config()->getConfig('title'); ?></h2></span>
+		<?php $userData = Core::getInstance()->getLib('User')->getUser() ?>
+		<div class="pull-right">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<a class="brand" href="#">Userpanel</a>
+					<ul class="nav">
+					<?php if($userData == true): ?>
+						<li><a href="/profile?u=<?php echo $userData['id']; ?>" tabindex="-1"><?php echo $userData['username']; ?></a></li>
+						<li><a tabindex="-1" href="#">Nachrichten <span class="badge bagde-inverse">In Arbeit</span></a></li>
+						<li><a tabindex="-1" href="#"><?php echo $userData['money']; ?>€</a></li>
+						<li><a tabindex="-1" href="api?api=1&api_key=logout">Logout</a></li>
+					<?php else: ?>
+						<li><a tabindex="-1" href="#myModal" role="button" data-toggle="modal">Login</a></li>
+					<?php endif ?>
+					</ul>
+				</div>
+			</div>
+				
+			</ul>
+			
+		</div>
+		
+	</div>
+</header>

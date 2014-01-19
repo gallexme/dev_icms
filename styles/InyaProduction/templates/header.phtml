@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name=viewport content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title><?php echo Core::getPageTitle(); ?></title>
+		<meta charset="utf-8">
+		<?php foreach($header->getJavascripts() as $javascript){ ?>
+		<script type="text/javascript" src="<?php echo $header->getJavascriptPath($javascript) ?>" defer></script>
+		<?php } ?>
+		<?php foreach($header->getStylesheets() as $stylesheet){ ?>
+			<link async rel="stylesheet" type="text/css" href="<?php echo $header->getStylesheetPath($stylesheet); ?>">
+		<?php } ?>
+		<?php if(isset($_SESSION['userid'])): ?>
+		<?php Core::getInstance()->getLib('User')->loadUser($_SESSION['userid']); ?>
+		<?php endif; ?>
+	</head>
+	<body>
+		<?php 
+			
+			if (! isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+				$client_ip = $_SERVER['REMOTE_ADDR'];
+			} else {
+				$client_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+			}
+			if(Core::getInstance()->getLib('User')->isLoggedIn()){
+				$userData = Core::getInstance()->getLib('User')->getUser();
+				$username = $userData['username'];
+			} else {
+				$username = "ICMS_GUEST";
+			}
+			if (!Core::db()->isResult(Core::db()->query("SELECT * FROM icms_accesslog WHERE ip = '$client_ip' and time > DATE_ADD(NOW() , INTERVAL - 1 MINUTE)")))
+				Core::db()->query("INSERT INTO icms_accesslog (id, ip, time, username) VALUES (NULL, '". $client_ip ."', NOW(), '$username')");
+		?>

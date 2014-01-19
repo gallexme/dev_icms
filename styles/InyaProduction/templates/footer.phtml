@@ -1,0 +1,19 @@
+<div class="clearfix"></div> 
+<footer>
+<div class="navbar navbar-fixed-bottom">
+	<div class="navbar-inner">
+		<div class="container">
+			<div class="nav-collapse collapse">
+			<ul class="nav">
+				<li><a href="#"><i class="icon-arrow-up"></i> Nach Oben</a></li>
+				<li><a><?php echo $footer->_getIcon('glyphicon-info-sign'); ?> Queries ausgef&uuml;hrt: <?php echo Core::db()->queryAmount(); ?></a></li>
+				<li><a><?php echo $footer->_getIcon('glyphicon-copyright-mark'); ?> Copyright InyaProduction 2014</a></li>
+				<li class="<?php echo $footer->_isActive('impressum'); ?>"><a href="impressum"><?php echo $footer->_getIcon('glyphicon-book'); ?>Impressum</a></li>
+				<li class="<?php echo $footer->_isActive('kontakt'); ?>"><a href="kontakt"><?php echo $footer->_getIcon('glyphicon-comment'); ?>Kontakt</a></li>
+				<li class="<?php echo $footer->_isActive('haftungsausschluss'); ?>"><a href="haftungsausschluss"><?php echo $footer->_getIcon('glyphicon-exclamation-sign'); ?>Haftungsausschluss</a></li>
+			</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</footer>

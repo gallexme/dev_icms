@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title"><?php echo $userContent->username."'s Profil"; ?> </h3>
+	</div>
+	<div class="panel-body">
+		<button class="btn"><span class="glyphicon glyphicon-envelope"></span><br />Kontaktieren</button>
+		<br /><br />
+		<?php if($userContent->premium == 1): ?>
+			<b>Premium Nutzer!</b><br /><br />
+		<?php endif; ?>
+			<p>Nutzername: <?php echo $userContent->username; ?></p>
+			<p>Registrierungsdatum: <?php echo $userContent->register; ?></p>
+		<?php if($profileContent == "NONE"): ?>
+			<br /><p><b>&Uuml;ber diesen Benutzer wurden keine weiteren Profilinformationen angegeben</b></p>
+		<?php else: ?>
+			<p>Hobbys: <?php echo $profileContent->hobbys; ?></p>
+			<p>Geschlecht: <?php echo $profileContent->gender; ?></p>
+			<p>Geburtsdatum: <?php echo $profileContent->birthdate; ?></p>
+		<?php endif; ?>
+	</div>
+</div> 
+ 

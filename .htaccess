@@ -1,0 +1,26 @@
+Order Deny,Allow
+Allow from all
+Satisfy any
+
+ErrorDocument 404 //errors/404.php
+ErrorDocument 403 //errors/404.php
+
+
+ExpiresActive On
+ExpiresDefault "access plus 1 hour"
+ExpiresByType image/gif "access plus 6 hour"
+ExpiresByType image/jpg "access plus 6 hour"
+ExpiresByType image/jpeg "access plus 6 hour"
+ExpiresByType image/png "access plus 6 hour"
+ExpiresByType text/javascript "access plus 24 hour"
+ExpiresByType application/x-javascript "access plus 24 hour"
+ExpiresByType application/x-shockwave-flash "access plus 24 hour"
+ExpiresByType text/css "access plus 1 hour"
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule .* index.php [L]
+</IfModule>
